@@ -1,0 +1,68 @@
+type Exercise implements Timestamps {
+  id: ID!
+  title: String!
+  description: String!
+  shortDescription: String!
+  theme: Theme! # Champ représentant le thème associé à cet exercice
+  type: ExerciseType! # Type d'exercice (texte, tableau, vidéo, etc.)
+  content: ExerciseContent! # Contenu spécifique de l'exercice
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Exercises {
+  info: Info!
+  results: [Exercise]!
+}
+
+enum ExerciseType {
+  TEXT
+  TABLE
+  VIDEO
+  # Ajoutez d'autres types d'exercices si nécessaire
+}
+
+union ExerciseContent = TextContent
+# union ExerciseContent = TextContent | TableContent | VideoContent
+
+type TextContent {
+  text: String!
+}
+
+# type TableContent {
+# Structure de données pour un tableau à remplir (si nécessaire)
+# }
+
+#type VideoContent {
+# Structure de données pour une vidéo (si nécessaire)
+# }
+
+# Inputs
+input ExerciseCreateInput {
+  title: String!
+  description: String!
+  shortDescription: String!
+  themeId: ID!
+  type: ExerciseType!
+  content: ExerciseContentInput!
+}
+
+input ExerciseUpdateInput {
+  title: String
+  description: String
+  shortDescription: String
+  themeId: ID
+  type: ExerciseType
+  content: ExerciseContentInput
+}
+
+input TextContentInput {
+  text: String!
+}
+
+# Ajoutez d'autres inputs pour les différents types de contenu (tableau, vidéo, etc.) si nécessaire
+
+input ExerciseContentInput {
+  textContent: TextContentInput # Input spécifique pour le contenu texte
+  # Autres champs pour les autres types de contenu (tableau, vidéo, etc.)
+}

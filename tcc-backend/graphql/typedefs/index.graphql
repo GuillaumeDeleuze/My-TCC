@@ -1,0 +1,30 @@
+scalar Date
+
+type Query {
+  #Users
+  users(params: QueryParams): Users!
+  user(id: ID!): User
+
+  #Themes
+  themes(params: QueryParams): Themes!
+  theme(id: ID!): Theme
+
+  #Exercise
+  exercises(aprams: QueryParams): Exercises!
+  exercise(id: ID!): Exercise
+}
+
+type Mutation {
+  #Users
+  createUser(user: UserCreateInput!): User!
+  updateUser(id: ID!, user: UserUpdateInput!): User!
+
+  #Themes
+  createTheme(theme: ThemeCreateInput!): Theme!
+  updateTheme(id: ID!, theme: ThemeUpdateInput!): Theme!
+
+  #Exercise
+  createExercise(exercise: ExerciseCreateInput!): Exercise!
+  updateExercise(id: ID!, exercise: ExerciseUpdateInput!): Exercise!
+  addExerciseToUser(id: ID!, user: ID!): Exercise!
+}

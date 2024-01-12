@@ -1,0 +1,37 @@
+type Theme implements Timestamps {
+  id: ID!
+  title: String!
+  shortDescription: String!
+  description: String!
+  backgroundImage: String!
+  exercises: [Exercise]
+
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Themes {
+  info: Info!
+  results: [Theme]!
+}
+
+# Inputs
+input ThemeCreateInput {
+  title: String!
+  description: String!
+  shortDescription: String!
+  imageUrl: String!
+}
+
+input ThemeUpdateInput {
+  title: String
+  description: String
+  shortDescription: String
+  imageUrl: String
+}
+
+type Exercise {
+  id: ID!
+  title: String!
+  shortDescription: String!
+}

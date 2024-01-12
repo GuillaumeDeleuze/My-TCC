@@ -1,0 +1,30 @@
+type User implements Timestamps {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  favorites: [ID]
+  exercises: [Exercise]
+  #progressions: [Progression!]!
+
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Users {
+  info: Info!
+  results: [User]!
+}
+
+# Inputs
+input UserCreateInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  name: String
+  email: String
+  password: String
+}

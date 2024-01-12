@@ -46,7 +46,7 @@ const Homepage: React.FC = () => {
           Liste des thèmes
         </Typography>
       </Box>
-      <AvatarList themes={themes} />
+      <AvatarList themes={backthemes} />
     </Container>
   );
 };

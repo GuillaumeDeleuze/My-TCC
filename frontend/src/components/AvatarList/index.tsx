@@ -13,11 +13,10 @@ const styles = {
 };
 
 interface Theme {
-  id: number;
+  id: string;
   imageUrl: string;
   title: string;
   shortDescription: string;
-  // link: string;
 }
 
 interface AvatarListProps {
@@ -32,6 +31,7 @@ const AvatarList: React.FC<AvatarListProps> = ({ themes }) => {
           <Grid key={theme.id} item xs={4}>
             <Box key={theme.id} sx={styles.theme}>
               <ThemeCard
+                id={theme.id}
                 imageUrl={theme.imageUrl}
                 title={theme.title}
                 shortDescription={theme.shortDescription}

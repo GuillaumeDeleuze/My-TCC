@@ -3,24 +3,28 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 import { CardActionArea } from '@mui/material';
 
 interface ThemeCardProps {
+  id: string;
   imageUrl: string;
   title: string;
   shortDescription: string;
-  // link: string;
 }
 
-const ThemeCard: React.FC<ThemeCardProps> = ({ imageUrl, title, shortDescription }) => {
+const ThemeCard: React.FC<ThemeCardProps> = ({ imageUrl, title, shortDescription, id }) => {
+  console.log(imageUrl);
+  const defaultImageUrl = '/assets/icons/themeIcons/colored/Observation.svg';
+
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea component={Link} to={`/theme/${id}`}>
         <CardMedia
           sx={{ objectFit: 'none' }}
           component="img"
           height="180"
-          image={imageUrl}
+          image={defaultImageUrl}
           alt={title}
         />
         <CardContent>

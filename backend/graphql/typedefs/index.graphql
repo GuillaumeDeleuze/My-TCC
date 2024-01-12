@@ -4,6 +4,7 @@ type Query {
   #Users
   users(params: QueryParams): Users!
   user(id: ID!): User
+  me: User
 
   #Themes
   themes(params: QueryParams): Themes!
@@ -27,4 +28,8 @@ type Mutation {
   createExercise(exercise: ExerciseCreateInput!): Exercise!
   updateExercise(id: ID!, exercise: ExerciseUpdateInput!): Exercise!
   addExerciseToUser(id: ID!, user: ID!): Exercise!
+
+  #Auth
+  login(credentials: LoginInput!): AuthPayload
+  signup(user: SignupInput!): AuthPayload
 }

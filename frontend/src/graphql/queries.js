@@ -7,11 +7,8 @@ export const GET_THEMES = gql`
         id
         title
         shortDescription
-        description
-        exercices {
+        exercises {
           title
-          id
-          shortDescription
         }
       }
     }

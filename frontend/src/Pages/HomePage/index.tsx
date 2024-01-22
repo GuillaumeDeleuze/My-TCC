@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Container, Box } from '@mui/material';
 import AvatarList from '../../components/AvatarList';
-import { themes } from '../../constants/ThemeList';
 import { useQuery } from '@apollo/client';
 import { GET_THEMES } from '../../graphql/queries';
 
@@ -46,7 +45,7 @@ const Homepage: React.FC = () => {
           Liste des thèmes
         </Typography>
       </Box>
-      <AvatarList themes={backthemes} />
+      <AvatarList type="theme" themes={backthemes} />
     </Container>
   );
 };

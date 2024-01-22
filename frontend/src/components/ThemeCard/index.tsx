@@ -6,20 +6,30 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { CardActionArea } from '@mui/material';
 
+const styles = {
+  root: {
+    maxWidth: 345,
+    width: '100%',
+    boxShadow:
+      '5px 5px 0px 0px rgba(58,64,79,0.1), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);'
+  }
+};
+
 interface ThemeCardProps {
   id: string;
   imageUrl: string;
   title: string;
   shortDescription: string;
+  type: string;
 }
 
-const ThemeCard: React.FC<ThemeCardProps> = ({ imageUrl, title, shortDescription, id }) => {
+const ThemeCard: React.FC<ThemeCardProps> = ({ imageUrl, title, shortDescription, id, type }) => {
   console.log(imageUrl);
   const defaultImageUrl = '/assets/icons/themeIcons/colored/Observation.svg';
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea component={Link} to={`/theme/${id}`}>
+    <Card sx={styles.root}>
+      <CardActionArea component={Link} to={`/${type}/${id}`}>
         <CardMedia
           sx={{ objectFit: 'none' }}
           component="img"

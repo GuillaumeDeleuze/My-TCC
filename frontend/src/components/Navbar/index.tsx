@@ -31,6 +31,11 @@ const Navbar: React.FC = () => {
               </li>
               <li>
                 <Typography sx={{ ml: 2 }} variant="body1">
+                  Les thèmes
+                </Typography>
+              </li>
+              <li>
+                <Typography sx={{ ml: 2 }} variant="body1">
                   Mes favoris
                 </Typography>
               </li>

@@ -21,16 +21,18 @@ interface Theme {
 
 interface AvatarListProps {
   themes: Theme[];
+  type: string;
 }
 
-const AvatarList: React.FC<AvatarListProps> = ({ themes }) => {
+const AvatarList: React.FC<AvatarListProps> = ({ themes, type }) => {
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         {themes.map((theme) => (
-          <Grid key={theme.id} item xs={4}>
+          <Grid key={theme.id} item md={6} xl={4}>
             <Box key={theme.id} sx={styles.theme}>
               <ThemeCard
+                type={type}
                 id={theme.id}
                 imageUrl={theme.imageUrl}
                 title={theme.title}

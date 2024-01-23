@@ -2,7 +2,7 @@
 import { connection } from 'mongoose';
 import connectDB from '..';
 import {
-  User, Theme, Exercise, Favorite,
+  User, Theme, Exercise, Favorite, UserExercise,
 } from '../models';
 
 // Définir ExerciseType
@@ -136,12 +136,27 @@ const seed = async () => {
     new Favorite({ user: users[0]._id, exercise: exercises[2]._id }),
   ];
 
+  // Création des utilisateurs exercices
+  const userExercises = [
+    new UserExercise({
+      userId: users[0]._id,
+      exerciseId: exercises[0]._id,
+      entries: [{ completedData: [['10', '15', '20']], createdAt: new Date(), updatedAt: new Date() }],
+    }),
+    new UserExercise({
+      userId: users[1]._id,
+      exerciseId: exercises[1]._id,
+      entries: [{ completedData: [['5', '12', '18']], createdAt: new Date(), updatedAt: new Date() }],
+    }),
+  ];
+
   // Sauvegarde des données
   const savings = [
     ...themes.map((theme) => theme.save()),
     ...exercises.map((exercise) => exercise.save()),
     ...users.map((user) => user.save()),
     ...favorites.map((favorite) => favorite.save()),
+    ...userExercises.map((userExercise) => userExercise.save()),
   ];
 
   await Promise.all(savings);

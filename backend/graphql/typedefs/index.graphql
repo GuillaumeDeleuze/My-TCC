@@ -1,4 +1,5 @@
 scalar Date
+scalar JSON
 
 type Query {
   #Users
@@ -11,8 +12,12 @@ type Query {
   theme(id: ID!): Theme
 
   #Exercise
-  exercises(aprams: QueryParams): Exercises!
+  exercises(params: QueryParams): Exercises!
   exercise(id: ID!): Exercise
+
+  # UserExercise
+  userExercises(params: QueryParams): UserExercises!
+  userExercise(id: ID!): UserExercise
 }
 
 type Mutation {
@@ -32,4 +37,11 @@ type Mutation {
   #Auth
   login(credentials: LoginInput!): AuthPayload
   signup(user: SignupInput!): AuthPayload
+
+  # UserExercise
+  createUserExercise(userExercise: UserExerciseCreateInput!): UserExercise!
+  updateUserExercise(
+    id: ID!
+    userExercise: UserExerciseUpdateInput!
+  ): UserExercise!
 }

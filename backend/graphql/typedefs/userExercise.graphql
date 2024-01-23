@@ -1,0 +1,37 @@
+type UserExercise implements Timestamps {
+  id: ID!
+  userId: ID!
+  exerciseId: ID!
+  entries: [UserExerciseEntry]
+
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type UserExercises {
+  info: Info!
+  results: [UserExercise]!
+}
+
+type UserExerciseEntry {
+  completedData: [[String]]!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+#Inputs
+input UserExerciseCreateInput {
+  userId: ID!
+  exerciseId: ID!
+  entries: [UserExerciseEntryInput]!
+}
+
+input UserExerciseUpdateInput {
+  entries: [UserExerciseEntryInput]!
+}
+
+input UserExerciseEntryInput {
+  completedData: [[String]]!
+  createdAt: Date!
+  updatedAt: Date!
+}

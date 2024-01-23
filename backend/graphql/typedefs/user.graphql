@@ -5,6 +5,7 @@ type User implements Timestamps {
   password: String!
   favorites: [ID]
   exercises: [Exercise]
+  userExercises: [UserExercise]
   #progressions: [Progression!]!
 
   createdAt: Date!
@@ -14,6 +15,19 @@ type User implements Timestamps {
 type Users {
   info: Info!
   results: [User]!
+}
+
+type UserExercise {
+  id: ID!
+  userId: ID!
+  exerciseId: ID!
+  entries: [UserExerciseEntry]
+}
+
+type UserExerciseEntry {
+  completedData: [[String]]!
+  createdAt: Date!
+  updatedAt: Date!
 }
 
 # Inputs

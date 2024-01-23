@@ -29,7 +29,12 @@ const userQueries = {
       },
     };
   },
-  user: async (_, { id }, { loaders }) => loaders.user.one(id),
+  user: async (_, { id }, { loaders }) => {
+    console.log('Fetching user with exercises for ID:', id);
+    const userWithExercises = await User.findById(id).populate('userExercises');
+    console.log('Fetched user with exercises:', userWithExercises);
+    return userWithExercises;
+  },
 
 //  userMail: async (_, { email }) => {
 //    const userMail = await User.findOne({ email });

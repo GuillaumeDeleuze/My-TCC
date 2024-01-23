@@ -1,7 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 
 import DataLoader from 'dataloader';
-import { User, Theme, Exercise } from '../db/models';
+import {
+  User, Theme, Exercise, UserExercise,
+} from '../db/models';
 
 const createLoader = (Model) => {
   const loader = new DataLoader(async (keys) => {
@@ -28,6 +30,7 @@ const context = async () => {
     user: createLoader(User),
     theme: createLoader(Theme),
     exercise: createLoader(Exercise),
+    userExercise: createLoader(UserExercise),
   };
 
   return { loaders };

@@ -3,7 +3,7 @@ type Exercise implements Timestamps {
   title: String!
   description: String!
   shortDescription: String!
-  theme: Theme! # Champ représentant le thème associé à cet exercice
+  theme: Theme!
   type: ExerciseType! # Type d'exercice (texte, tableau, vidéo, etc.)
   content: ExerciseContent! # Contenu spécifique de l'exercice
   createdAt: Date!

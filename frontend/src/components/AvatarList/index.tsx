@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import ThemeCard from '../ThemeCard';
+import AvatarWithTitle from '../AvatarWithTitle';
 
 const styles = {
   theme: {
@@ -12,7 +12,7 @@ const styles = {
   }
 };
 
-interface Theme {
+interface Element {
   id: string;
   imageUrl: string;
   title: string;
@@ -20,23 +20,23 @@ interface Theme {
 }
 
 interface AvatarListProps {
-  themes: Theme[];
+  elementsList: Element[];
   type: string;
 }
 
-const AvatarList: React.FC<AvatarListProps> = ({ themes, type }) => {
+const AvatarList: React.FC<AvatarListProps> = ({ elementsList, type }) => {
   return (
     <>
       <Grid container spacing={3}>
-        {themes.map((theme) => (
-          <Grid key={theme.id} item md={6} xl={4}>
-            <Box key={theme.id} sx={styles.theme}>
-              <ThemeCard
+        {elementsList.map((element) => (
+          <Grid key={element.id} item xs={3}>
+            <Box key={element.id} sx={styles.theme}>
+              <AvatarWithTitle
                 type={type}
-                id={theme.id}
-                imageUrl={theme.imageUrl}
-                title={theme.title}
-                shortDescription={theme.shortDescription}
+                id={element.id}
+                imageUrl={element.imageUrl}
+                title={element.title}
+                shortDescription={element.shortDescription}
               />
             </Box>
           </Grid>

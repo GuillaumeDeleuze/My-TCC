@@ -29,3 +29,13 @@ export const GET_THEME = gql`
     }
   }
 `;
+
+export const GET_EXERCISE = gql`
+  query Exercise($exerciseId: ID!) {
+    exercise(id: $exerciseId) {
+      id
+      title
+      description
+    }
+  }
+`;

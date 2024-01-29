@@ -1,27 +1,11 @@
 import React from 'react';
-import { Typography, Container, Box } from '@mui/material';
 import AvatarList from '../../components/AvatarList';
 import { useQuery } from '@apollo/client';
 import { GET_THEMES } from '../../graphql/queries';
+import ListPage from '../../components/ListPage';
 
-const styles = {
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    padding: '20px',
-    textAlign: 'center'
-  },
-  themesListTitle: {
-    textAlign: 'start'
-  },
-  themesRoot: {
-    borderBottom: '1px solid #848484',
-    margin: '20px 0px',
-    width: '100%'
-  }
-};
+const loremIpsum =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae enim, doloremque explicabo nostrum tempora veniam possimus consequuntur temporibus maxime sint, assumenda ipsa accusantium ex? Placeat nemo molestiae facere a.';
 
 const Homepage: React.FC = () => {
   const { loading, error, data } = useQuery(GET_THEMES);
@@ -29,24 +13,14 @@ const Homepage: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const backthemes = data.themes.results;
-
-  console.log('themes', backthemes);
+  const themeList = data.themes.results;
 
   return (
-    <Container sx={styles.root}>
-      <Typography variant="body1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam soluta ea ex
-        vitae aspernatur ut perspiciatis corporis laborum aliquid architecto rerum officiis nihil
-        illum, delectus alias incidunt minima? Libero.
-      </Typography>
-      <Box sx={styles.themesRoot}>
-        <Typography sx={styles.themesListTitle} variant="h5">
-          Liste des thèmes
-        </Typography>
-      </Box>
-      <AvatarList type="theme" themes={backthemes} />
-    </Container>
+    <>
+      <ListPage title="Home Page" description={loremIpsum}>
+        <AvatarList type="theme" elementsList={themeList} />
+      </ListPage>
+    </>
   );
 };
 
